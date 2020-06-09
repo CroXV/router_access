@@ -3,8 +3,8 @@ from PyQt5 import QtCore as qtc
 
 from ..mainwindow import MainWindow
 
-from ...utils import manage_data
-from ...utils.worker import Worker
+from ..utils import manage_data
+from router_access.ui.utils.worker import Worker
 from ...driver.main import DriverManager
 
 

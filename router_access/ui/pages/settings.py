@@ -2,7 +2,7 @@ from PyQt5 import QtWidgets as qtw
 from PyQt5 import QtGui as qtg
 from PyQt5 import QtCore as qtc
 
-from ...utils.worker import Worker
+from router_access.ui.utils.worker import Worker
 
 
 class WlanSettingsPage(qtw.QWidget):
