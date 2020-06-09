@@ -27,7 +27,7 @@ class WlanSettingsPage(qtw.QWidget):
         self.wifi_toggle_button.disconnect()
 
         self.status_label.setFont(qtg.QFont('Arial', 12, qtg.QFont.Bold))
-        self.status_label.setText('Initializing engines')
+        self.status_label.setText('Initializing engine')
         self.status_label.setFont(qtg.QFont('Arial', 20, qtg.QFont.Bold))
 
         toggle = Worker(self.driver_manager.settings_page.toggle_wifi, update_status=True)

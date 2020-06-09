@@ -25,4 +25,4 @@ class WlanSettingsPage:
 
         applySettingsElement.click()
 
-        time.sleep(1.5)
+        time.sleep(1.2)

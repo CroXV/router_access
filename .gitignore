@@ -1,8 +1,12 @@
 # Executables
 *.exe
 
+# selenium drivers
+geckodriver/
+
 # Image Files
 imgs/
+icons/
 
 *.ico
 *.png
