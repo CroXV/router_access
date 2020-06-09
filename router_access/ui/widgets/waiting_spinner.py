@@ -7,29 +7,26 @@ from PyQt5.QtWidgets import *
 
 class QtWaitingSpinner(QWidget):
 
+    drawCircle = False
+    mCenterOnParent = True
+    mDisableParentWhenSpinning = False
+
+    mColor = QColor(Qt.black)
+    mRoundness = 100.0
+    mMinimumTrailOpacity = 31.4159265358979323846
+    mTrailFadePercentage = 50.0
+    mRevolutionsPerSecond = 1.57079632679489661923
+    mNumberOfLines = 20
+    mLineLength = 10
+    mLineWidth = 2
+    mInnerRadius = 20
+    mCurrentCounter = 0
+    mIsSpinning = False
+
     def __init__(self):
         super().__init__()
 
-        self.drawCircle = False
-        self.defaultCircleValues()
-
-    def defaultCircleValues(self):
-        self.mCenterOnParent = True
-        self.mDisableParentWhenSpinning = False
-
-        self.mColor = QColor(Qt.black)
-        self.mRoundness = 100.0
-        self.mMinimumTrailOpacity = 31.4159265358979323846
-        self.mTrailFadePercentage = 50.0
-        self.mRevolutionsPerSecond = 1.57079632679489661923
-        self.mNumberOfLines = 20
-        self.mLineLength = 10
-        self.mLineWidth = 2
-        self.mInnerRadius = 20
-        self.mCurrentCounter = 0
-        self.mIsSpinning = False
-
-    def changeCircleProperties(self, **kwargs):
+    def setProperties(self, **kwargs):
         properties = {
             'mCenterOnParent',
             'mDisableParentWhenSpinning',
@@ -96,7 +93,7 @@ class QtWaitingSpinner(QWidget):
     def updatePosition(self):
         if self.parentWidget() and self.mCenterOnParent:
             self.move(int(self.parentWidget().width() / 2 - self.width() / 2),
-                      int(self.parentWidget().height() / 2 - self.height() / 2))
+                      int(self.parentWidget().height() / 2 - self.height() / 2) - 20)
 
     def lineCountDistanceFromPrimary(self, current, primary, totalNrOfLines):
         distance = primary - current
