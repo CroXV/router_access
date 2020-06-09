@@ -20,7 +20,7 @@ class Driver:
     @staticmethod
     def start_driver():
         Driver.geckodriver = webdriver.Firefox(
-            resource_path('../geckodriver/'),
+            resource_path('./geckodriver/'),
             options=Driver.options,
             log_path=os.devnull
         )
