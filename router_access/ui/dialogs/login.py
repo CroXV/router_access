@@ -11,6 +11,7 @@ from ...driver.main import DriverManager
 class LogInDialog(qtw.QDialog):
 
     authenticated = qtc.pyqtSignal(str, str)
+    logged_in = qtc.pyqtSignal()
 
     def __init__(self):
         super().__init__()
@@ -88,6 +89,7 @@ class LogInDialog(qtw.QDialog):
     def log_in_usr(self, usr, pwd):
         log_in = Worker(self.driver_manager.login_page.log_in, usr, pwd)
         log_in.signals.finished.connect(self.mw.next_page)
+        log_in.signals.finished.connect(self.logged_in.emit)
 
         if self.driver_loaded:
             Worker.threadpool.start(log_in)
@@ -102,8 +104,9 @@ class LogInDialog(qtw.QDialog):
             self.authenticated.connect(self.show_main_window)
             self.authenticated.connect(self.save_login)
             self.authenticated.connect(self.log_in_usr)
-
             self.authenticated.emit(usr, pwd)
+
+            self.logged_in.connect(self.mw.keep_page_alive)
 
     def show_main_window(self):
         self.mw = MainWindow()

@@ -8,6 +8,8 @@ from ..driver.main import DriverManager
 
 class MainWindow(qtw.QMainWindow):
 
+    logged_out = qtc.pyqtSignal()
+
     def __init__(self,):
         super().__init__()
 
@@ -37,6 +39,12 @@ class MainWindow(qtw.QMainWindow):
         self.stacked_widget.addWidget(self.settings_page)
 
         self.setCentralWidget(self.stacked_widget)
+
+    def keep_page_alive(self):
+        self.timer = qtc.QTimer()
+        self.timer.setInterval(250000)  # time interval set to 4 minutes
+        self.timer.timeout.connect(self.driver_manager.refresh_page)
+        self.timer.start()
 
     def next_page(self):
         self.stacked_widget.setCurrentIndex(self.stacked_widget.currentIndex() + 1)

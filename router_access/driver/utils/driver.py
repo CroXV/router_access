@@ -15,7 +15,7 @@ class Driver:
     geckodriver = None
 
     options = Options()
-    options.headless = True
+    # options.headless = True
 
     @staticmethod
     def start_driver():
@@ -41,5 +41,4 @@ class Driver:
             time.sleep(delay)
         except TimeoutError:
             Driver.geckodriver.quit()
-
         return Driver.geckodriver.find_element_by_css_selector(css_selector)

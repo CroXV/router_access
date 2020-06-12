@@ -9,3 +9,6 @@ class DriverManager:
 
         self.login_page = login.LoginPage(self.driver)
         self.settings_page = wlan.WlanSettingsPage(self.driver)
+
+    def refresh_page(self):
+        self.driver.geckodriver.refresh()
