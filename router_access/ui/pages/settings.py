@@ -12,9 +12,9 @@ class WlanSettingsPage(qtw.QWidget):
 
         self.driver_manager = driver_manager
 
-        self.initialize_UI()
+        self.setup_widgets()
 
-    def initialize_UI(self):
+    def setup_widgets(self):
         self.status_label = qtw.QLabel('Hi', font=qtg.QFont('Arial', 25, qtg.QFont.Bold))
 
         self.wifi_toggle_button = qtw.QPushButton('Router XS', clicked=self.handle_wifi_toggle)
