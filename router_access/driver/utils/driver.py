@@ -15,7 +15,7 @@ class Driver:
     geckodriver = None
 
     options = Options()
-    # options.headless = True
+    options.headless = True
 
     @staticmethod
     def start_driver():

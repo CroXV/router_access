@@ -6,8 +6,6 @@ class Signals(qtc.QObject):
     result = qtc.pyqtSignal(object)
     finished = qtc.pyqtSignal()
 
-    status = qtc.pyqtSignal(str)
-
 
 class Worker(qtc.QRunnable):
 
@@ -20,12 +18,6 @@ class Worker(qtc.QRunnable):
         self.args = args
         self.kwargs = kwargs
         self.signals = Signals()
-
-        self.status()
-
-    def status(self):
-        if [key for key in self.kwargs.keys() if key == 'update_status']:
-            self.kwargs['update_status'] = self.signals.status
 
     def run(self):
         try:
